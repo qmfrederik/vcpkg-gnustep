@@ -33,17 +33,17 @@ jobs:
       - name: Bootstrap vcpkg
         run: ./vcpkg/scripts/bootstrap.ps1
       - name: Install libobjc2
-        run: ./vcpkg/vcpkg.exe install libobjc2:x64-windows-llvm --overlay-ports=./ports --overlay-triplets=./triplets
+        run: ./vcpkg/vcpkg.exe install libobjc2:x64-windows-llvm --overlay-ports=./ports --overlay-triplets=./triplets --enforce-port-checks
       - name: Install libdispatch
-        run: ./vcpkg/vcpkg.exe install libdispatch:x64-windows-llvm --overlay-ports=./ports --overlay-triplets=./triplets
+        run: ./vcpkg/vcpkg.exe install libdispatch:x64-windows-llvm --overlay-ports=./ports --overlay-triplets=./triplets --enforce-port-checks
       - name: Install gnustep-make
-        run: ./vcpkg/vcpkg.exe install gnustep-make:x64-windows-llvm --overlay-ports=./ports --overlay-triplets=./triplets
+        run: ./vcpkg/vcpkg.exe install gnustep-make:x64-windows-llvm --overlay-ports=./ports --overlay-triplets=./triplets --enforce-port-checks
       - name: Install gnustep-base
-        run: ./vcpkg/vcpkg.exe install gnustep-base:x64-windows-llvm --overlay-ports=./ports --overlay-triplets=./triplets
+        run: ./vcpkg/vcpkg.exe install gnustep-base:x64-windows-llvm --overlay-ports=./ports --overlay-triplets=./triplets --enforce-port-checks
       - name: Install gnustep-gui
-        run: ./vcpkg/vcpkg.exe install gnustep-gui:x64-windows-llvm --overlay-ports=./ports --overlay-triplets=./triplets
+        run: ./vcpkg/vcpkg.exe install gnustep-gui:x64-windows-llvm --overlay-ports=./ports --overlay-triplets=./triplets --enforce-port-checks
       - name: Install gnustep-headless
-        run: ./vcpkg/vcpkg.exe install gnustep-headless:x64-windows-llvm --overlay-ports=./ports --overlay-triplets=./triplets
+        run: ./vcpkg/vcpkg.exe install gnustep-headless:x64-windows-llvm --overlay-ports=./ports --overlay-triplets=./triplets --enforce-port-checks
       - uses: actions/upload-artifact@v4
         if: always()
         with:
@@ -101,11 +101,11 @@ jobs:
       - name: Bootstrap vcpkg
         run: ./vcpkg/bootstrap-vcpkg.sh
       - name: Install libobjc2
-        run: ./vcpkg/vcpkg install libobjc2:x64-linux-llvm --overlay-ports=./ports --overlay-triplets=./triplets
+        run: ./vcpkg/vcpkg install libobjc2:x64-linux-llvm --overlay-ports=./ports --overlay-triplets=./triplets --enforce-port-checks
       - name: Install libdispatch
-        run: ./vcpkg/vcpkg install libdispatch:x64-linux-llvm --overlay-ports=./ports --overlay-triplets=./triplets
+        run: ./vcpkg/vcpkg install libdispatch:x64-linux-llvm --overlay-ports=./ports --overlay-triplets=./triplets --enforce-port-checks
       - name: Install gnustep-make
-        run: ./vcpkg/vcpkg install gnustep-make:x64-linux-llvm --overlay-ports=./ports --overlay-triplets=./triplets
+        run: ./vcpkg/vcpkg install gnustep-make:x64-linux-llvm --overlay-ports=./ports --overlay-triplets=./triplets --enforce-port-checks
       - name: Install gnustep-base dependencies (Ubuntu)
         run: |
           apt-get update
@@ -116,7 +116,7 @@ jobs:
           yum install -y libxml2-devel libxslt-devel libcurl-devel gnutls-devel libffi-devel libicu-devel
         if: matrix.family == 'rhel'
       - name: Install gnustep-base
-        run: ./vcpkg/vcpkg install gnustep-base:x64-linux-llvm --overlay-ports=./ports --overlay-triplets=./triplets
+        run: ./vcpkg/vcpkg install gnustep-base:x64-linux-llvm --overlay-ports=./ports --overlay-triplets=./triplets --enforce-port-checks
       - name: Install gnustep-gui dependencies (Ubuntu)
         run: |
           apt-get update
@@ -127,9 +127,9 @@ jobs:
           yum install --enablerepo=${{ matrix.repos}} -y libtiff-devel libpng-devel libjpeg-devel giflib-devel
         if: matrix.family == 'rhel'
       - name: Install gnustep-gui
-        run: ./vcpkg/vcpkg install gnustep-gui:x64-linux-llvm --overlay-ports=./ports --overlay-triplets=./triplets
+        run: ./vcpkg/vcpkg install gnustep-gui:x64-linux-llvm --overlay-ports=./ports --overlay-triplets=./triplets --enforce-port-checks
       - name: Install gnustep-headless
-        run: ./vcpkg/vcpkg install gnustep-headless:x64-linux-llvm --overlay-ports=./ports --overlay-triplets=./triplets
+        run: ./vcpkg/vcpkg install gnustep-headless:x64-linux-llvm --overlay-ports=./ports --overlay-triplets=./triplets --enforce-port-checks
       - uses: actions/upload-artifact@v4
         if: always()
         with:

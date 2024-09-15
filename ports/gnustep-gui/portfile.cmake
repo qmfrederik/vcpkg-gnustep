@@ -35,5 +35,12 @@ vcpkg_fixup_pkgconfig()
 
 vcpkg_install_copyright(FILE_LIST "${SOURCE_PATH}/COPYING.LIB")
 
+# Remove empty directories
+file(
+    REMOVE_RECURSE
+    "${CURRENT_PACKAGES_DIR}/debug/lib/GNUstep/Themes"
+    "${CURRENT_PACKAGES_DIR}/lib/GNUstep/Themes"
+)
+
 # GNUstep Makefiles go in share/ and are different for release and debug configurations
 set(VCPKG_POLICY_ALLOW_DEBUG_SHARE enabled)

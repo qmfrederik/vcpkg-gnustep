@@ -31,3 +31,9 @@ vcpkg_install_copyright(FILE_LIST "${SOURCE_PATH}/COPYING.LIB")
 
 # gnustep-headless does not include headers
 set(VCPKG_POLICY_EMPTY_INCLUDE_FOLDER enabled)
+
+# gnustep-headless is a bundle which is installed into lib\GNUstep\Bundles
+set(VCPKG_POLICY_ALLOW_DLLS_IN_LIB enabled)
+
+# gnustep-headless includes gpbs[.exe], which is a runtime tool and installed into bin.
+set(VCPKG_POLICY_ALLOW_EXES_IN_BIN enabled)

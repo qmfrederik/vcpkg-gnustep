@@ -10,7 +10,8 @@
           "VCPKG_CHAINLOAD_TOOLCHAIN_FILE": "${sourceDir}/../triplets/toolchains/x64-windows-llvm.toolchain.cmake",
           "PKG_CONFIG_EXECUTABLE":"${sourceDir}/../vcpkg/installed/x64-windows/tools/pkgconf/pkgconf.exe",
           "VCPKG_TARGET_TRIPLET": "x64-windows-llvm",
-          "CMAKE_EXPORT_COMPILE_COMMANDS": "ON"
+          "CMAKE_EXPORT_COMPILE_COMMANDS": "ON",
+          "CMAKE_BUILD_TYPE": "Release"
         }
       },
       {

@@ -105,3 +105,24 @@ target_link_libraries(GNUstep::GUI INTERFACE ${GNUSTEP_GUI})
 
 target_link_libraries(GNUstep::Base INTERFACE GNUstep::ObjC)
 target_link_libraries(GNUstep::GUI INTERFACE GNUstep::Base)
+
+function(target_copy_gnustep_libraries target)
+    set(GNUstep_bindir "${VCPKG_INSTALLED_DIR}/${VCPKG_TARGET_TRIPLET}/$<IF:$<CONFIG:Debug>,debug/,>bin")
+
+    if(WIN32)
+        add_custom_command(
+            TARGET ${target}
+            POST_BUILD
+                COMMAND "${CMAKE_COMMAND}" -E copy_if_different "${GNUstep_bindir}/objc.dll" "${CMAKE_CURRENT_BINARY_DIR}"
+                COMMAND "${CMAKE_COMMAND}" -E copy_if_different "${GNUstep_bindir}/gnustep-base-1_30.dll" "${CMAKE_CURRENT_BINARY_DIR}"
+                COMMAND "${CMAKE_COMMAND}" -E copy_if_different "${GNUstep_bindir}/libxml2.dll" "${CMAKE_CURRENT_BINARY_DIR}"
+                COMMAND "${CMAKE_COMMAND}" -E copy_if_different "${GNUstep_bindir}/ffi-8.dll" "${CMAKE_CURRENT_BINARY_DIR}"
+                COMMAND "${CMAKE_COMMAND}" -E copy_if_different "${GNUstep_bindir}/libcurl$<IF:$<CONFIG:Debug>,-d,>.dll" "${CMAKE_CURRENT_BINARY_DIR}"
+                COMMAND "${CMAKE_COMMAND}" -E copy_if_different "${GNUstep_bindir}/libxslt.dll" "${CMAKE_CURRENT_BINARY_DIR}"
+                COMMAND "${CMAKE_COMMAND}" -E copy_if_different "${GNUstep_bindir}/dispatch.dll" "${CMAKE_CURRENT_BINARY_DIR}"
+                COMMAND "${CMAKE_COMMAND}" -E copy_if_different "${GNUstep_bindir}/iconv-2.dll" "${CMAKE_CURRENT_BINARY_DIR}"
+                COMMAND "${CMAKE_COMMAND}" -E copy_if_different "${GNUstep_bindir}/zlib$<IF:$<CONFIG:Debug>,d,>1.dll" "${CMAKE_CURRENT_BINARY_DIR}"
+                COMMAND "${CMAKE_COMMAND}" -E copy_if_different "${GNUstep_bindir}/liblzma.dll" "${CMAKE_CURRENT_BINARY_DIR}"
+                COMMAND "${CMAKE_COMMAND}" -E copy_if_different "${GNUstep_bindir}/getopt.dll" "${CMAKE_CURRENT_BINARY_DIR}")
+    endif()
+endfunction()

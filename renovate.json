@@ -18,7 +18,8 @@
       {
         "matchDatasources": ["github-releases"],
         "matchDepNames": ["gnustep/libs-base"],
-        "extractVersion": "^Release (?<version>[0-9\\.])$"
+        "versioning": "regex:^(Release |base-|)(?<major>\\d+)[\\._](?<minor>\\d+)[\\._](?<patch>\\d+)$",
+        "replacementVersionTemplate": "{{major}}.{{minor}}.{{patch}}"
       }
     ]
 }

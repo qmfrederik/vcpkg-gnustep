@@ -1,6 +1,6 @@
 {
     "name": "gnustep-base",
-    "version": "1.30.0",
+    "version": "1.30.0..",
     "description": "The GNUstep Base Library is a library of general-purpose, non-graphical Objective C objects.",
     "homepage": "https://github.com/gnustep/libs-base",
     "license": "LGPL-2.1",

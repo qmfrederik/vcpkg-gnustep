@@ -1,3 +1,6 @@
+# Mark the network profile as private, so inbound connections (e.g. SSH) work correctly
+Get-NetConnectionProfile -Name Network | Set-NetConnectionProfile -NetworkCategory Private
+
 # Install Chocolatey
 iex ((New-Object System.Net.WebClient).DownloadString('https://community.chocolatey.org/install.ps1'))
 
@@ -17,4 +20,7 @@ cd ${env:HOME}\Source\Repos
 & 'C:\Program Files\Git\bin\git.exe' clone https://github.com/qmfrederik/vcpkg-gnustep
 cd vcpkg-gnustep
 & 'C:\Program Files\Git\bin\git.exe' clone https://github.com/microsoft/vcpkg
+cd vcpkg
+& 'C:\Program Files\Git\bin\git.exe' checkout 2024.08.23
+cd ..
 ./vcpkg/bootstrap-vcpkg.bat

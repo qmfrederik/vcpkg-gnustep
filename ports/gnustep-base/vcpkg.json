@@ -32,6 +32,10 @@
         "platform": "windows"
       },
       {
+        "name": "liblzma",
+        "platform": "windows"
+      },
+      {
         "name": "vcpkg-gnustep",
         "host": true
       }
